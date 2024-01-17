@@ -7,6 +7,10 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import TextField from "@mui/material/TextField";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormLabel from "@mui/material/FormLabel";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
 
 const marks = [
   {
@@ -70,11 +74,13 @@ function BeautAI() {
   const [count, setCount] = useState(0);
   const [infos, setInfos] = useState([]);
   const [prenom, setPrenom] = useState("");
+  const [genre, setGenre] = useState("");
 
   let budget = 1;
   let pigmentation = "pale";
   let type = 1;
   let firstname = "";
+  let gender = "";
 
   const handleClick = (number, info) => {
     if (count === number - 1) {
@@ -85,14 +91,23 @@ function BeautAI() {
 
   const selectFirstName = (e) => {
     firstname = e.target.value;
-    console.log(count);
+  };
+
+  const selectGenre = (e) => {
+    gender = e.target.value;
   };
 
   const handleClickPrenom = () => {
-    console.log(count);
     if (count === 0) {
       setCount(1);
       setPrenom(firstname);
+    }
+  };
+
+  const handleClickGenre = () => {
+    if (count === 1) {
+      setCount(2);
+      setGenre(gender);
     }
   };
 
@@ -117,226 +132,203 @@ function BeautAI() {
   };
 
   return (
-    <div id={styles.BeautAI}>
-      <nav>
-        <h1>BeautAI</h1>
-      </nav>
-      <div id={styles.BeautAI__section}>
-        {count >= 0 ? (
-          <div className={styles.BeautAI__section__questionCenter__Container}>
-            <div className={styles.BeautAI__section__questionCenter}>
-              <h2>Quel est votre prénom ?</h2>
-              <TextField
-                id="outlined-basic"
-                label="Outlined"
-                variant="outlined"
-                onChange={(e) => selectFirstName(e)}
-              />
-              <button
-                className={styles.BeautAI__button}
-                type="submit"
-                onClick={() => {
-                  handleClickPrenom();
-                }}
-              >
-                Valider
-              </button>
+    <div>
+      <div id={styles.BeautAI}>
+        <nav>
+          <h1>BeautAI</h1>
+        </nav>
+        <div id={styles.BeautAI__section}>
+          {count >= 0 ? (
+            <div className={styles.BeautAI__section__questionCenter__Container}>
+              <div className={styles.BeautAI__section__questionCenter}>
+                <h2>Quel est votre prénom ?</h2>
+                <TextField
+                  id="outlined-basic"
+                  label="Outlined"
+                  variant="outlined"
+                  onChange={(e) => selectFirstName(e)}
+                />
+                <button
+                  className={styles.BeautAI__button}
+                  type="submit"
+                  onClick={() => {
+                    handleClickPrenom();
+                  }}
+                >
+                  Valider
+                </button>
+              </div>
             </div>
-          </div>
-        ) : null}
-        {count >= 1 ? (
-          <div className={styles.BeautAI__section__questionLeft__Container}>
-            <div className={styles.BeautAI__section__questionLeft}>
-              <h2>Budget</h2>
-              <p>
-                Pour adapter finement notre proposition à votre budget, veuillez
-                déplacer le curseur suivant
-              </p>
+          ) : null}
+
+          {count >= 1 ? (
+            <div className={styles.BeautAI__section__questionLeft__Container}>
+              <div className={styles.BeautAI__section__questionLeft}>
+                <h2>Quel est votre genre ?</h2>
+                <FormControl>
+                  <FormLabel id="demo-row-radio-buttons-group-label">
+                    Veuillez choisir un :
+                  </FormLabel>
+                  <RadioGroup
+                    row
+                    aria-labelledby="demo-row-radio-buttons-group-label"
+                    name="row-radio-buttons-group"
+                    onChange={(e) => selectGenre(e)}
+                  >
+                    <FormControlLabel
+                      value="femme"
+                      control={<Radio />}
+                      label="femme"
+                    />
+                    <FormControlLabel
+                      value="homme"
+                      control={<Radio />}
+                      label="homme"
+                    />
+                    <FormControlLabel
+                      value=""
+                      control={<Radio />}
+                      label="Ne se prononce pas"
+                    />
+                  </RadioGroup>
+                </FormControl>
+                <button
+                  className={styles.BeautAI__button}
+                  type="submit"
+                  onClick={() => {
+                    handleClickGenre();
+                  }}
+                >
+                  Valider
+                </button>
+              </div>
+            </div>
+          ) : null}
+          {count >= 2 ? (
+            <div className={styles.BeautAI__section__questionRight__Container}>
+              <div className={styles.BeautAI__section__questionRight}>
+                <h2>Budget</h2>
+                <p>
+                  Pour adapter finement notre proposition à votre budget,
+                  veuillez déplacer le curseur suivant
+                </p>
+                <Slider
+                  aria-label="Restricted values"
+                  valueLabelFormat={valueLabelFormat}
+                  getAriaValueText={valuetext}
+                  step={null}
+                  valueLabelDisplay="off"
+                  min={1}
+                  max={4}
+                  marks={marks}
+                  onChange={budgetChange}
+                />
+                <button
+                  className={styles.BeautAI__button}
+                  type="submit"
+                  onClick={() => {
+                    handleClick(3, budget);
+                  }}
+                >
+                  Valider
+                </button>
+              </div>
+            </div>
+          ) : null}
+          {count >= 3 ? (
+            <div className={styles.BeautAI__section__questionLeft__Container}>
+              <div className={styles.BeautAI__section__questionLeft}>
+                <h2>Pigmentation de votre peau</h2>
+                <p>Quelle est la pigmentation de votre peau ?</p>
+                <FormControl sx={{ m: 1, minWidth: 200 }}>
+                  <InputLabel id="demo-simple-select-helper-label">
+                    Pigmentation
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-helper-label"
+                    id="demo-simple-select-helper"
+                    defaultValue={"pâle"}
+                    onChange={pigmentationChange}
+                  >
+                    <MenuItem value="">
+                      <em>Choisissez :</em>
+                    </MenuItem>
+                    <MenuItem id={styles["pale"]} value={"pâle"}>
+                      pâle
+                    </MenuItem>
+                    <MenuItem id={styles["claire"]} value={"Claire"}>
+                      claire
+                    </MenuItem>
+                    <MenuItem id={styles["mate"]} value={"Mate"}>
+                      mate
+                    </MenuItem>
+                    <MenuItem id={styles["foncee"]} value={"Foncée"}>
+                      foncée
+                    </MenuItem>
+                    <MenuItem id={styles["noire"]} value={"Très foncée"}>
+                      très foncée / noire
+                    </MenuItem>
+                  </Select>
+                </FormControl>
+                <button
+                  className={styles.BeautAI__button}
+                  type="submit"
+                  onClick={() => handleClick(4, pigmentation)}
+                >
+                  Valider
+                </button>
+              </div>
+            </div>
+          ) : null}
+          {count >= 4 ? (
+            <div className={styles.BeautAI__section__questionRight}>
+              <h2>Type de peau ?</h2>
+              <p>Quel est votre type de peau ?</p>
               <Slider
                 aria-label="Restricted values"
-                valueLabelFormat={valueLabelFormat}
+                valueLabelFormat={valueLabelTypes}
                 getAriaValueText={valuetext}
                 step={null}
-                valueLabelDisplay="off"
+                valueLabelDisplay="on"
+                marks={Types}
+                className={styles.slider}
+                onChange={typeChange}
                 min={1}
-                max={4}
-                marks={marks}
-                onChange={budgetChange}
+                max={6}
+                defaultValue={1}
               />
               <button
                 className={styles.BeautAI__button}
                 type="submit"
-                onClick={() => {
-                  handleClick(2, budget);
+                onClick={() => handleClick(5, type)}
+              >
+                Valider
+              </button>
+            </div>
+          ) : null}
+
+          {count >= 5 ? (
+            <div className={styles.BeautAI__response}>
+              <Link
+                to={"/routine"}
+                state={{
+                  infos: { infos },
+                  prenom: { prenom },
+                  genre: { genre },
                 }}
               >
-                Valider
-              </button>
-            </div>
-          </div>
-        ) : null}
-        {count >= 2 ? (
-          <div className={styles.BeautAI__section__questionRight__Container}>
-            <div className={styles.BeautAI__section__questionRight}>
-              <h2>Pigmentation de votre peau</h2>
-              <p>Quelle est la pigmentation de votre peau ?</p>
-              <FormControl sx={{ m: 1, minWidth: 200 }}>
-                <InputLabel id="demo-simple-select-helper-label">
-                  Pigmentation
-                </InputLabel>
-                <Select
-                  labelId="demo-simple-select-helper-label"
-                  id="demo-simple-select-helper"
-                  defaultValue={"pâle"}
-                  onChange={pigmentationChange}
+                <button
+                  className={styles.BeautAI__button}
+                  type="submit"
+                  onClick={() => handleClick(8)}
                 >
-                  <MenuItem value="">
-                    <em>Choisissez :</em>
-                  </MenuItem>
-                  <MenuItem id={styles["pale"]} value={"pâle"}>
-                    pâle
-                  </MenuItem>
-                  <MenuItem id={styles["claire"]} value={"Claire"}>
-                    claire
-                  </MenuItem>
-                  <MenuItem id={styles["mate"]} value={"Mate"}>
-                    mate
-                  </MenuItem>
-                  <MenuItem id={styles["foncee"]} value={"Foncée"}>
-                    foncée
-                  </MenuItem>
-                  <MenuItem id={styles["noire"]} value={"Très foncée"}>
-                    très foncée / noire
-                  </MenuItem>
-                </Select>
-              </FormControl>
-              <button
-                className={styles.BeautAI__button}
-                type="submit"
-                onClick={() => handleClick(3, pigmentation)}
-              >
-                Valider
-              </button>
+                  Obtenir la réponse
+                </button>
+              </Link>
             </div>
-          </div>
-        ) : null}
-        {count >= 3 ? (
-          <div className={styles.BeautAI__section__questionLeft}>
-            <h2>Type de peau ?</h2>
-            <p>Quel est votre type de peau ?</p>
-            <Slider
-              aria-label="Restricted values"
-              valueLabelFormat={valueLabelTypes}
-              getAriaValueText={valuetext}
-              step={null}
-              valueLabelDisplay="on"
-              marks={Types}
-              className={styles.slider}
-              onChange={typeChange}
-              min={1}
-              max={6}
-              defaultValue={1}
-            />
-            <button
-              className={styles.BeautAI__button}
-              type="submit"
-              onClick={() => handleClick(4, type)}
-            >
-              Valider
-            </button>
-          </div>
-        ) : null}
-        {/*
-        {count >= 3 ? (
-          <div className={styles.BeautAI__section__questionRight}>
-            <h2>Question 4</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione
-              provident accusamus laborum error voluptas perspiciatis labore ad
-              tenetur.
-            </p>
-            <input type="range" name="" id="" />
-            <button type="submit" onClick={() => handleClick(4)}>
-              Valider
-            </button>
-          </div>
-        ) : null}
-        {count >= 4 ? (
-          <div className={styles.BeautAI__section__questionLeft}>
-            <h2>Question 5</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione
-              provident accusamus laborum error voluptas perspiciatis labore ad
-              tenetur.
-            </p>
-            <input type="range" name="" id="" />
-            <button type="submit" onClick={() => handleClick(5)}>
-              Valider
-            </button>
-          </div>
-        ) : null}
-        {count >= 5 ? (
-          <div className={styles.BeautAI__section__questionRight}>
-            <h2>Question 6</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione
-              provident accusamus laborum error voluptas perspiciatis labore ad
-              tenetur.
-            </p>
-            <input type="range" name="" id="" />
-            <button type="submit" onClick={() => handleClick(6)}>
-              Valider
-            </button>
-          </div>
-        ) : null}
-        {count >= 6 ? (
-          <div className={styles.BeautAI__section__questionLeft}>
-            <h2>Question 7</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione
-              provident accusamus laborum error voluptas perspiciatis labore ad
-              tenetur.
-            </p>
-            <input type="range" name="" id="" />
-            <button type="submit" onClick={() => handleClick(7)}>
-              Valider
-            </button>
-          </div>
-        ) : null}
-        {count >= 7 ? (
-          <div className={styles.BeautAI__section__questionRight}>
-            <h2>Question 8</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione
-              provident accusamus laborum error voluptas perspiciatis labore ad
-              tenetur.
-            </p>
-            <input type="range" name="" id="" />
-            <button type="submit" onClick={() => handleClick(8)}>
-              Valider
-            </button>
-          </div>
-        ) : null*/}
-        {count >= 3 ? (
-          <div className={styles.BeautAI__response}>
-            <Link
-              to={"/routine"}
-              state={{ infos: { infos }, prenom: { prenom } }}
-            >
-              <button
-                className={styles.BeautAI__button}
-                type="submit"
-                onClick={() => handleClick(8)}
-              >
-                Obtenir la réponse
-              </button>
-            </Link>
-          </div>
-        ) : null}
+          ) : null}
+        </div>
       </div>
-      {/* <div className={styles.BeautAI__footer}>
-      <footer>Copyright</footer>
-      </div> */}
     </div>
   );
 }

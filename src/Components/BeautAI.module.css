@@ -113,7 +113,7 @@ button {
   margin: 2%;
 }
 .BeautAI__footer {
-  position: absolute;
+  position: sticky;
   width: 100%;
   bottom: 0;
 }

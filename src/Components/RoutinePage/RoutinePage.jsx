@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import ProductCard from "./ProductCard";
 import styles from "./RoutinePage.module.css";
 
@@ -62,22 +62,22 @@ export default function RoutinePage() {
     },
   ];
 
+  useMemo(() => {
+    if (stepsData[0].products.length > 0) {
+      setDisplayedProducts(stepsData[0].products);
+    }
+  },[]);
 
-  const handleClick = (stepProducts) => {
-    setDisplayedProducts(stepProducts);
-  };
-
-
-console.log(displayedProducts)
+  console.log(displayedProducts);
 
   return (
     <section className={styles.GlobalPage}>
       {stepsData.map((step, id) => (
-        <div onClick={() => handleClick(step.products)} key={id} className={styles.step}>
+        <div key={id} className={styles.step}>
           <h4 className={styles.titleContainer}>{step.title}</h4>
           <p className={styles.descriptionContainer}>{step.description}</p>
           <div className={styles.cardPosition}>
-            {step.products.map((product) => (
+            {displayedProducts.map((product) => (
               <ProductCard
                 key={product.id}
                 nom={product.nom}

@@ -278,7 +278,7 @@ export default function RoutinePage() {
   return (
     <section className={styles.GlobalPage}>
       <div className={styles.topPage}>
-        <h3>Voici votre routine personnalisée</h3>
+        <h1>Voici votre routine personnalisée</h1>
       </div>
       <div>
         <div>
@@ -302,7 +302,10 @@ export default function RoutinePage() {
                     nom={product.nom && product.nom}
                     prix={product.prix && product.prix}
                   />
-                  <button className={styles.addCart}  onClick={() => removeFromCart(index)}>
+                  <button
+                    className={styles.addCart}
+                    onClick={() => removeFromCart(index)}
+                  >
                     Retirer du panier
                   </button>
                 </div>
@@ -348,7 +351,10 @@ export default function RoutinePage() {
                   }
                   prix={reponseDemaquillant.prix && reponseDemaquillant.prix}
                 />
-                <button className={styles.addCart}  onClick={() => toggleCartItem(reponseDemaquillant)}>
+                <button
+                  className={styles.addCart}
+                  onClick={() => toggleCartItem(reponseDemaquillant)}
+                >
                   {panier.some((item) => item.nom === reponseDemaquillant.nom)
                     ? "Retirer du panier"
                     : "Ajouter au panier"}
@@ -376,7 +382,10 @@ export default function RoutinePage() {
                   }
                   prix={reponseNettoyant.prix && reponseNettoyant.prix}
                 />
-                <button className={styles.addCart}  onClick={() => toggleCartItem(reponseNettoyant)}>
+                <button
+                  className={styles.addCart}
+                  onClick={() => toggleCartItem(reponseNettoyant)}
+                >
                   {panier.some((item) => item.nom === reponseNettoyant.nom)
                     ? "Retirer du panier"
                     : "Ajouter au panier"}
@@ -403,7 +412,10 @@ export default function RoutinePage() {
                     }
                     prix={reponseLotion.prix && reponseLotion.prix}
                   />
-                  <button className={styles.addCart}  onClick={() => toggleCartItem(reponseLotion)}>
+                  <button
+                    className={styles.addCart}
+                    onClick={() => toggleCartItem(reponseLotion)}
+                  >
                     {panier.some((item) => item.nom === reponseLotion.nom)
                       ? "Retirer du panier"
                       : "Ajouter au panier"}
@@ -430,7 +442,10 @@ export default function RoutinePage() {
                     }
                     prix={reponseSerum.prix && reponseSerum.prix}
                   />
-                  <button className={styles.addCart}  onClick={() => toggleCartItem(reponseSerum)}>
+                  <button
+                    className={styles.addCart}
+                    onClick={() => toggleCartItem(reponseSerum)}
+                  >
                     {panier.some((item) => item.nom === reponseSerum.nom)
                       ? "Retirer du panier"
                       : "Ajouter au panier"}
@@ -457,7 +472,10 @@ export default function RoutinePage() {
                     }
                     prix={reponseContour.prix && reponseContour.prix}
                   />
-                  <button className={styles.addCart}  onClick={() => toggleCartItem(reponseContour)}>
+                  <button
+                    className={styles.addCart}
+                    onClick={() => toggleCartItem(reponseContour)}
+                  >
                     {panier.some((item) => item.nom === reponseContour.nom)
                       ? "Retirer du panier"
                       : "Ajouter au panier"}
@@ -485,7 +503,10 @@ export default function RoutinePage() {
                     }
                     prix={reponseCreme.prix && reponseCreme.prix}
                   />
-                  <button className={styles.addCart} onClick={() => toggleCartItem(reponseCreme)}>
+                  <button
+                    className={styles.addCart}
+                    onClick={() => toggleCartItem(reponseCreme)}
+                  >
                     {panier.some((item) => item.nom === reponseCreme.nom)
                       ? "Retirer du panier"
                       : "Ajouter au panier"}
@@ -511,7 +532,10 @@ export default function RoutinePage() {
                     }
                     prix={reponseLevres.prix && reponseLevres.prix}
                   />
-                  <button className={styles.addCart}  onClick={() => toggleCartItem(reponseLevres)}>
+                  <button
+                    className={styles.addCart}
+                    onClick={() => toggleCartItem(reponseLevres)}
+                  >
                     {panier.some((item) => item.nom === reponseLevres.nom)
                       ? "Retirer du panier"
                       : "Ajouter au panier"}
@@ -542,7 +566,7 @@ export default function RoutinePage() {
             }}
             controls
           ></Player>
-        </div>
+        </section>
       ) : (
         <p>En cours de chargement...</p>
       )}

@@ -57,6 +57,7 @@ export const MyComposition = (props) => {
       <Sequence from={120}>
         {frame <= 170 && (
           <AbsoluteFill
+            className={styles.text}
             style={{
               justifyContent: "center",
               alignItems: "center",
@@ -71,6 +72,7 @@ export const MyComposition = (props) => {
       <Sequence from={180}>
         {frame <= 230 && (
           <AbsoluteFill
+            className={styles.text}
             style={{
               justifyContent: "center",
               alignItems: "center",
@@ -86,6 +88,7 @@ export const MyComposition = (props) => {
       <Sequence from={240}>
         {frame <= 290 && (
           <AbsoluteFill
+            className={styles.text}
             style={{
               justifyContent: "center",
               alignItems: "center",
@@ -101,6 +104,7 @@ export const MyComposition = (props) => {
       <Sequence from={300}>
         {frame <= 350 && (
           <AbsoluteFill
+            className={styles.text}
             style={{
               justifyContent: "center",
               alignItems: "center",
@@ -131,6 +135,7 @@ export const MyComposition = (props) => {
       <Sequence from={480}>
         {frame <= 530 && (
           <AbsoluteFill
+            className={styles.text}
             style={{
               justifyContent: "center",
               alignItems: "center",
@@ -146,6 +151,7 @@ export const MyComposition = (props) => {
       <Sequence from={540}>
         {frame <= 590 && (
           <AbsoluteFill
+            className={styles.text}
             style={{
               justifyContent: "center",
               alignItems: "center",
@@ -177,6 +183,7 @@ export const MyComposition = (props) => {
       <Sequence from={720}>
         {frame <= 750 && (
           <AbsoluteFill
+            className={styles.text}
             style={{
               justifyContent: "center",
               alignItems: "center",
@@ -192,6 +199,7 @@ export const MyComposition = (props) => {
       <Sequence from={760}>
         {frame <= 810 && (
           <AbsoluteFill
+            className={styles.text}
             style={{
               justifyContent: "center",
               alignItems: "center",
@@ -223,6 +231,7 @@ export const MyComposition = (props) => {
       <Sequence from={940}>
         {frame <= 1000 && (
           <AbsoluteFill
+            className={styles.text}
             style={{
               justifyContent: "center",
               alignItems: "center",
@@ -238,6 +247,7 @@ export const MyComposition = (props) => {
       <Sequence from={1010}>
         {frame <= 1060 && (
           <AbsoluteFill
+            className={styles.text}
             style={{
               justifyContent: "center",
               alignItems: "center",
@@ -269,6 +279,7 @@ export const MyComposition = (props) => {
       <Sequence from={1190}>
         {frame <= 1240 && (
           <AbsoluteFill
+            className={styles.text}
             style={{
               justifyContent: "center",
               alignItems: "center",
@@ -284,6 +295,7 @@ export const MyComposition = (props) => {
       <Sequence from={1250}>
         {frame <= 1300 && (
           <AbsoluteFill
+            className={styles.text}
             style={{
               justifyContent: "center",
               alignItems: "center",
@@ -315,6 +327,7 @@ export const MyComposition = (props) => {
       <Sequence from={1430}>
         {frame <= 1480 && (
           <AbsoluteFill
+            className={styles.text}
             style={{
               justifyContent: "center",
               alignItems: "center",
@@ -330,6 +343,7 @@ export const MyComposition = (props) => {
       <Sequence from={1490}>
         {frame <= 1540 && (
           <AbsoluteFill
+            className={styles.text}
             style={{
               justifyContent: "center",
               alignItems: "center",
@@ -361,6 +375,7 @@ export const MyComposition = (props) => {
       <Sequence from={1670}>
         {frame <= 1720 && (
           <AbsoluteFill
+            className={styles.text}
             style={{
               justifyContent: "center",
               alignItems: "center",
@@ -376,6 +391,7 @@ export const MyComposition = (props) => {
       <Sequence from={1730}>
         {frame <= 1780 && (
           <AbsoluteFill
+            className={styles.text}
             style={{
               justifyContent: "center",
               alignItems: "center",

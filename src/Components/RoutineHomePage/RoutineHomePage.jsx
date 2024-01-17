@@ -9,7 +9,6 @@ import essence from "../../assets/essence.jpg";
 import serum from "../../assets/serum.jpg";
 import mask from "../../assets/mask.jpg";
 import creme from "../../assets/creme.jpg";
-import solaire from "../../assets/solaire.jpeg";
 import skincare from "../../assets/skincare.jpg";
 
 export default function RoutineHomePage() {
@@ -19,21 +18,23 @@ export default function RoutineHomePage() {
         <div className={style.topContainer}>
           <img className={style.imagePosition} src={routineHome}></img>
           <div className={style.buttonBannerContainer}>
-          <h3 className={style.titleTopContainer}>Routine Visage: les étapes du Layering</h3>
-          <Link to={"/BeautAI"}>
-            <button className={style.bottomButton}>
-              Découvrir votre routine
-            </button>
-          </Link>
-        </div>
+            <h3 className={style.titleTopContainer}>
+              Routine Visage: les étapes du Layering
+            </h3>
+            <Link to={"/BeautAI"}>
+              <button className={style.bottomButton}>
+                Découvrir votre routine
+              </button>
+            </Link>
+          </div>
         </div>
         <div className={style.buttonContainer}>
           <Link className={style.topLinkButton} to={"/BeautAI"}>
-          <h3 className={style.titleBottomBanner}>Routine Visage: les étapes du Layering</h3>
-          
-            <button className={style.buttonTop}>
-              Découvrir votre routine
-            </button>
+            <h3 className={style.titleBottomBanner}>
+              Routine Visage: les étapes du Layering
+            </h3>
+
+            <button className={style.buttonTop}>Découvrir votre routine</button>
           </Link>
         </div>
       </div>
@@ -58,9 +59,7 @@ export default function RoutineHomePage() {
           expérience holistique, offrant à votre épiderme l&apos;attention
           qu&apos;il mérite.
         </article>
-        <h3 className={style.titleContainer}>
-          1. Démaquillage / Nettoyage à l&apos;huile :
-        </h3>
+        <h3 className={style.titleContainer}>1. Démaquillage :</h3>
         <article className={style.ArticleContainer}>
           <ul>
             <li>
@@ -208,25 +207,6 @@ export default function RoutineHomePage() {
           </ul>
           <div className={style.articleImage}>
             <img className={style.articleImagePosition} src={creme}></img>
-          </div>
-        </article>
-
-        <h3 className={style.titleContainer}>9. Protection solaire :</h3>
-        <article className={style.ArticleContainer}>
-          <ul>
-            <li>
-              Produits recommandés : Écran solaire avec un SPF d&apos;au moins
-              30.
-            </li>
-            <li>
-              Conseils : L&apos;application quotidienne d&apos;un écran solaire
-              protège la peau des dommages UV, prévenant le vieillissement
-              prématuré et réduisant le risque de cancers de la peau.
-              Réappliquez toutes les deux heures si vous êtes exposé au soleil.{" "}
-            </li>
-          </ul>
-          <div className={style.articleImage}>
-            <img className={style.articleImagePosition} src={solaire}></img>
           </div>
         </article>
 

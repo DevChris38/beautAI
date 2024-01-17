@@ -65,7 +65,7 @@ export const MyComposition = (props) => {
               opacity: opacityName,
             }}
           >
-            Micheline
+            {props.prenom}
           </AbsoluteFill>
         )}
       </Sequence>

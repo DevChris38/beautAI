@@ -6,6 +6,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import TextField from "@mui/material/TextField";
 
 const marks = [
   {
@@ -68,15 +69,30 @@ function valueLabelTypes(value) {
 function BeautAI() {
   const [count, setCount] = useState(0);
   const [infos, setInfos] = useState([]);
+  const [prenom, setPrenom] = useState("");
 
   let budget = 1;
   let pigmentation = "pale";
   let type = 1;
+  let firstname = "";
 
   const handleClick = (number, info) => {
     if (count === number - 1) {
       setCount(number);
       setInfos([...infos, info]);
+    }
+  };
+
+  const selectFirstName = (e) => {
+    firstname = e.target.value;
+    console.log(count);
+  };
+
+  const handleClickPrenom = () => {
+    console.log(count);
+    if (count === 0) {
+      setCount(1);
+      setPrenom(firstname);
     }
   };
 
@@ -107,6 +123,28 @@ function BeautAI() {
       </nav>
       <div id={styles.BeautAI__section}>
         {count >= 0 ? (
+          <div className={styles.BeautAI__section__questionCenter__Container}>
+            <div className={styles.BeautAI__section__questionCenter}>
+              <h2>Quel est votre prénom ?</h2>
+              <TextField
+                id="outlined-basic"
+                label="Outlined"
+                variant="outlined"
+                onChange={(e) => selectFirstName(e)}
+              />
+              <button
+                className={styles.BeautAI__button}
+                type="submit"
+                onClick={() => {
+                  handleClickPrenom();
+                }}
+              >
+                Valider
+              </button>
+            </div>
+          </div>
+        ) : null}
+        {count >= 1 ? (
           <div className={styles.BeautAI__section__questionLeft__Container}>
             <div className={styles.BeautAI__section__questionLeft}>
               <h2>Budget</h2>
@@ -129,7 +167,7 @@ function BeautAI() {
                 className={styles.BeautAI__button}
                 type="submit"
                 onClick={() => {
-                  handleClick(1, budget);
+                  handleClick(2, budget);
                 }}
               >
                 Valider
@@ -137,7 +175,7 @@ function BeautAI() {
             </div>
           </div>
         ) : null}
-        {count >= 1 ? (
+        {count >= 2 ? (
           <div className={styles.BeautAI__section__questionRight__Container}>
             <div className={styles.BeautAI__section__questionRight}>
               <h2>Pigmentation de votre peau</h2>
@@ -175,14 +213,14 @@ function BeautAI() {
               <button
                 className={styles.BeautAI__button}
                 type="submit"
-                onClick={() => handleClick(2, pigmentation)}
+                onClick={() => handleClick(3, pigmentation)}
               >
                 Valider
               </button>
             </div>
           </div>
         ) : null}
-        {count >= 2 ? (
+        {count >= 3 ? (
           <div className={styles.BeautAI__section__questionLeft}>
             <h2>Type de peau ?</h2>
             <p>Quel est votre type de peau ?</p>
@@ -202,7 +240,7 @@ function BeautAI() {
             <button
               className={styles.BeautAI__button}
               type="submit"
-              onClick={() => handleClick(3, type)}
+              onClick={() => handleClick(4, type)}
             >
               Valider
             </button>
@@ -281,7 +319,10 @@ function BeautAI() {
         ) : null*/}
         {count >= 3 ? (
           <div className={styles.BeautAI__response}>
-            <Link to={"/routine"} state={{ infos: { infos } }}>
+            <Link
+              to={"/routine"}
+              state={{ infos: { infos }, prenom: { prenom } }}
+            >
               <button
                 className={styles.BeautAI__button}
                 type="submit"

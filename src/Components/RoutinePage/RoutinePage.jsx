@@ -22,6 +22,7 @@ export default function RoutinePage() {
   let { state } = useLocation();
   const [panier, setPanier] = useState([]);
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [prenom, setPrenom] = useState(state.prenom.prenom);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -73,7 +74,7 @@ export default function RoutinePage() {
   }
 
   const openai = new OpenAI({
-    apiKey: "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",
+    apiKey: "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",
     dangerouslyAllowBrowser: true,
   });
 
@@ -548,6 +549,7 @@ export default function RoutinePage() {
             className={styles.player}
             component={MyComposition}
             inputProps={{
+              prenom,
               reponseDemaquillant,
               reponseNettoyant,
               reponseLotion,

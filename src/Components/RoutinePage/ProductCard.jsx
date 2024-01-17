@@ -14,7 +14,7 @@ export default function ProductCard({ nom, conseils_utilisation, prix }) {
             {prix ? <p>{prix}</p> : null}
           </div>
         </div>
-        <button className={style.addCard}>Ajouter au panier</button>
+        {/* <button className={style.addCard}>Retirer du panier</button> */}
       </div>
     </section>
   );

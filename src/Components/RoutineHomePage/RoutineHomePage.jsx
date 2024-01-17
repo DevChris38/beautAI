@@ -20,7 +20,6 @@ export default function RoutineHomePage() {
           <img className={style.imagePosition} src={routineHome}></img>
           <div className={style.buttonBannerContainer}>
           <h3 className={style.titleTopContainer}>Routine Visage: les étapes du Layering</h3>
-          
           <Link to={"/BeautAI"}>
             <button className={style.bottomButton}>
               Découvrir votre routine

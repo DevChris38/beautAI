@@ -107,70 +107,79 @@ function BeautAI() {
       </nav>
       <div id={styles.BeautAI__section}>
         {count >= 0 ? (
-          <div className={styles.BeautAI__section__questionLeft}>
-            <h2>Budget</h2>
-            <p>
-              Pour adapter finement notre proposition à votre budget, veuillez
-              déplacer le curseur suivant
-            </p>
-            <Slider
-              aria-label="Restricted values"
-              valueLabelFormat={valueLabelFormat}
-              getAriaValueText={valuetext}
-              step={null}
-              valueLabelDisplay="off"
-              min={1}
-              max={4}
-              marks={marks}
-              onChange={budgetChange}
-            />
-            <button
-              type="submit"
-              onClick={() => {
-                handleClick(1, budget);
-              }}
-            >
-              Valider
-            </button>
+          <div className={styles.BeautAI__section__questionLeft__Container}>
+            <div className={styles.BeautAI__section__questionLeft}>
+              <h2>Budget</h2>
+              <p>
+                Pour adapter finement notre proposition à votre budget, veuillez
+                déplacer le curseur suivant
+              </p>
+              <Slider
+                aria-label="Restricted values"
+                valueLabelFormat={valueLabelFormat}
+                getAriaValueText={valuetext}
+                step={null}
+                valueLabelDisplay="off"
+                min={1}
+                max={4}
+                marks={marks}
+                onChange={budgetChange}
+              />
+              <button
+                className={styles.BeautAI__button}
+                type="submit"
+                onClick={() => {
+                  handleClick(1, budget);
+                }}
+              >
+                Valider
+              </button>
+            </div>
           </div>
         ) : null}
         {count >= 1 ? (
-          <div className={styles.BeautAI__section__questionRight}>
-            <h2>Pigmentation de votre peau</h2>
-            <p>Quelle est la pigmentation de votre peau ?</p>
-            <FormControl sx={{ m: 1, minWidth: 200 }}>
-              <InputLabel id="demo-simple-select-helper-label">
-                Pigmentation
-              </InputLabel>
-              <Select
-                labelId="demo-simple-select-helper-label"
-                id="demo-simple-select-helper"
-                defaultValue={"pâle"}
-                onChange={pigmentationChange}
+          <div className={styles.BeautAI__section__questionRight__Container}>
+            <div className={styles.BeautAI__section__questionRight}>
+              <h2>Pigmentation de votre peau</h2>
+              <p>Quelle est la pigmentation de votre peau ?</p>
+              <FormControl sx={{ m: 1, minWidth: 200 }}>
+                <InputLabel id="demo-simple-select-helper-label">
+                  Pigmentation
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-helper-label"
+                  id="demo-simple-select-helper"
+                  defaultValue={"pâle"}
+                  onChange={pigmentationChange}
+                >
+                  <MenuItem value="">
+                    <em>Choisissez :</em>
+                  </MenuItem>
+                  <MenuItem id={styles["pale"]} value={"pâle"}>
+                    pâle
+                  </MenuItem>
+                  <MenuItem id={styles["claire"]} value={"Claire"}>
+                    claire
+                  </MenuItem>
+                  <MenuItem id={styles["mate"]} value={"Mate"}>
+                    mate
+                  </MenuItem>
+                  <MenuItem id={styles["foncee"]} value={"Foncée"}>
+                    foncée
+                  </MenuItem>
+                  <MenuItem id={styles["noire"]} value={"Très foncée"}>
+                    très foncée / noire
+                  </MenuItem>
+                </Select>
+              </FormControl>
+              <button
+                className={styles.BeautAI__button}
+                type="submit"
+                onClick={() => handleClick(2, pigmentation)}
               >
-                <MenuItem value="">
-                  <em>Choisissez :</em>
-                </MenuItem>
-                <MenuItem id={styles["pale"]} value={"pâle"}>
-                  pâle
-                </MenuItem>
-                <MenuItem id={styles["claire"]} value={"Claire"}>
-                  claire
-                </MenuItem>
-                <MenuItem id={styles["mate"]} value={"Mate"}>
-                  mate
-                </MenuItem>
-                <MenuItem id={styles["foncee"]} value={"Foncée"}>
-                  foncée
-                </MenuItem>
-                <MenuItem id={styles["noire"]} value={"Très foncée"}>
-                  très foncée / noire
-                </MenuItem>
-              </Select>
-            </FormControl>
-            <button type="submit" onClick={() => handleClick(2, pigmentation)}>
-              Valider
-            </button>
+                Valider
+              </button>
+            </div>
           </div>
         ) : null}
         {count >= 2 ? (
@@ -190,7 +199,11 @@ function BeautAI() {
               max={6}
               defaultValue={1}
             />
-            <button type="submit" onClick={() => handleClick(3, type)}>
+            <button
+              className={styles.BeautAI__button}
+              type="submit"
+              onClick={() => handleClick(3, type)}
+            >
               Valider
             </button>
           </div>
@@ -267,14 +280,22 @@ function BeautAI() {
           </div>
         ) : null*/}
         {count >= 3 ? (
-          <Link to={"/routine"} state={{ infos: { infos } }}>
-            <button type="submit" onClick={() => handleClick(8)}>
-              Obtenir la réponse
-            </button>
-          </Link>
+          <div className={styles.BeautAI__response}>
+            <Link to={"/routine"} state={{ infos: { infos } }}>
+              <button
+                className={styles.BeautAI__button}
+                type="submit"
+                onClick={() => handleClick(8)}
+              >
+                Obtenir la réponse
+              </button>
+            </Link>
+          </div>
         ) : null}
       </div>
+      {/* <div className={styles.BeautAI__footer}>
       <footer>Copyright</footer>
+      </div> */}
     </div>
   );
 }

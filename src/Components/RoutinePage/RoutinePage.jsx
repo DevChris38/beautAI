@@ -1,7 +1,10 @@
+import { useState } from "react";
 import ProductCard from "./ProductCard";
 import styles from "./RoutinePage.module.css";
 
 export default function RoutinePage() {
+  const [displayedProducts, setDisplayedProducts] = useState([]);
+
   const stepsData = [
     {
       title: "Etape 1 - Le double nettoyage (matin et soir) : Le Démaquillage",
@@ -34,7 +37,7 @@ export default function RoutinePage() {
       title: "Etape 2 - Le double nettoyage (matin et soir) : Le nettoyage",
       description:
         "Le nettoyant est la seconde étape du double nettoyage. Il sert à enlever les résidus de gras et éliminer toutes les impuretés pour avoir un visage plus net et sain. Choisissez un nettoyant au pH légèrement acide (pH naturel de la peau situé entre 4.5 et 6, pH neutre est de 7) qui préserve le film hydrolipidique de la peau ou bien un nettoyant au pH légèrement alcalin qui convient à la peau grasse ou mixte.",
-       products: [
+      products: [
         {
           id: 1,
           nom: "L'Oréal Démaquillant Micellaire",
@@ -59,10 +62,18 @@ export default function RoutinePage() {
     },
   ];
 
+
+  const handleClick = (stepProducts) => {
+    setDisplayedProducts(stepProducts);
+  };
+
+
+console.log(displayedProducts)
+
   return (
     <section className={styles.GlobalPage}>
       {stepsData.map((step, id) => (
-        <div key={id} className={styles.step}>
+        <div onClick={() => handleClick(step.products)} key={id} className={styles.step}>
           <h4 className={styles.titleContainer}>{step.title}</h4>
           <p className={styles.descriptionContainer}>{step.description}</p>
           <div className={styles.cardPosition}>

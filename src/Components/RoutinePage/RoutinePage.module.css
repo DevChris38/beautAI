@@ -1,0 +1,30 @@
+.cardPosition{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+flex-wrap: wrap;
+    gap: 2rem;
+    width: 100vw;
+    margin-bottom: 2rem;
+}
+
+.GlobalPage{
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+justify-content: flex-start;
+align-content: flex-start;
+
+margin-bottom: 2rem;
+width: 100vw;
+}
+.titleContainer{
+margin: 1rem;
+color: black;
+}
+
+.descriptionContainer{
+    margin: 2rem;
+    color: black;
+    text-align: justify;
+}

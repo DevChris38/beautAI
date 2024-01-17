@@ -219,7 +219,7 @@ function BeautAI() {
                   step={null}
                   valueLabelDisplay="off"
                   min={1}
-                  max={4}
+                  max={3}
                   marks={marks}
                   onChange={budgetChange}
                 />
@@ -281,29 +281,31 @@ function BeautAI() {
             </div>
           ) : null}
           {count >= 4 ? (
-            <div className={styles.BeautAI__section__questionRight}>
-              <h2>Type de peau ?</h2>
-              <p>Quel est votre type de peau ?</p>
-              <Slider
-                aria-label="Restricted values"
-                valueLabelFormat={valueLabelTypes}
-                getAriaValueText={valuetext}
-                step={null}
-                valueLabelDisplay="on"
-                marks={Types}
-                className={styles.slider}
-                onChange={typeChange}
-                min={1}
-                max={6}
-                defaultValue={1}
-              />
-              <button
-                className={styles.BeautAI__button}
-                type="submit"
-                onClick={() => handleClick(5, type)}
-              >
-                Valider
-              </button>
+            <div className={styles.BeautAI__section__questionRight__Container}>
+              <div className={styles.BeautAI__section__questionRight}>
+                <h2>Type de peau ?</h2>
+                <p>Quel est votre type de peau ?</p>
+                <Slider
+                  aria-label="Restricted values"
+                  valueLabelFormat={valueLabelTypes}
+                  getAriaValueText={valuetext}
+                  step={null}
+                  valueLabelDisplay="on"
+                  marks={Types}
+                  className={styles.slider}
+                  onChange={typeChange}
+                  min={1}
+                  max={6}
+                  defaultValue={1}
+                />
+                <button
+                  className={styles.BeautAI__button}
+                  type="submit"
+                  onClick={() => handleClick(5, type)}
+                >
+                  Valider
+                </button>
+              </div>
             </div>
           ) : null}
 

@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App.jsx";
-import BeautUI from "./Components/BeautUI";
+import BeautAI from "./Components/BeautAI";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -11,8 +11,12 @@ const router = createBrowserRouter([
     element: <App />,
   },
   {
-    path: "/beautui",
-    element: <BeautUI />,
+    path: "/beautai",
+    element: <BeautAI />,
+  },
+  {
+    path: "/result",
+    element: <RoutinePage />,
   },
 ]);
 

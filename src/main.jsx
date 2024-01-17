@@ -6,6 +6,7 @@ import BeautAI from "./Components/BeautAI";
 import RoutinePage from "./Components/RoutinePage/RoutinePage.jsx";
 import "./index.css";
 import RoutineHomePage from "./Components/RoutineHomePage/RoutineHomePage.jsx";
+import Video from "./Components/Video.jsx";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
   {
     path: "/beautai",
     element: <BeautAI />,
+  },
+  {
+    path: "/video",
+    element: <Video />,
   },
 ]);
 

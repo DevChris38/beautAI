@@ -32,3 +32,9 @@ p {
   color: black;
   text-align: justify;
 }
+
+.player {
+  position: relative;
+  left: 50vw;
+  transform: translateX(-50%);
+}

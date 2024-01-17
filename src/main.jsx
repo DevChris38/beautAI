@@ -5,11 +5,16 @@ import App from "./App.jsx";
 import BeautAI from "./Components/BeautAI";
 import RoutinePage from "./Components/RoutinePage/RoutinePage.jsx";
 import "./index.css";
+import RoutineHomePage from "./Components/RoutineHomePage/RoutineHomePage.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+  },
+  {
+    path: "/routineHome",
+    element: <RoutineHomePage />,
   },
   {
     path: "/routine",

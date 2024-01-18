@@ -8,6 +8,8 @@ import Popover from "@mui/material/Popover";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import basket from "../../assets/basket.png";
+import { Player } from "@remotion/player";
+import { MyComposition } from "../../remotion/Composition";
 
 export default function RoutinePage() {
   const [reponseDemaquillant, setReponseDemaquillant] = useState();
@@ -71,7 +73,7 @@ export default function RoutinePage() {
   }
 
   const openai = new OpenAI({
-    apiKey: "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",
+    apiKey: "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",
     dangerouslyAllowBrowser: true,
   });
 
@@ -87,7 +89,7 @@ export default function RoutinePage() {
             {
               role: "user",
               content: `Propose une crème parmi les marques suivante : 
-              Lancôme, Giorgio Armani Beauty, Yves Saint Laurent Beauté, Kiehl's, Biotherm, Urban Decay, Ralph Lauren Fragrances, Shu Uemura, Viktor&Rolf, Maison Margiela Fragrances, Diesel Fragrances, Clarisonic, Atelier Cologne, Valentino Beauty, Mugler, Azzaro, Proenza Schouler, Cacharel, Paloma Picasso, Helena Rubinstein, YUE SAI, My Blend by Dr. Olivier Courtin, Diesel Parfums, Guy Laroche, L'oreal paris, Garnier, maybelline, nyx, essie, dark and lovely, mixa, niely, la roche posay, vichy, cerave, skinCeuticals, skinbetter science, le plus adapté à une personne qui a un budget ${budget} et une peau ${state.infos.infos[1]} et ${typePeau}, explique la raison de ton choix et donne le prix (sous la forme (X euros)). Les éléments du json doivent être 'nom', 'raison', 'prix'`,
+              Lancôme, Giorgio Armani Beauty, Yves Saint Laurent Beauté, Kiehl's, Biotherm, Urban Decay, Ralph Lauren Fragrances, Shu Uemura, Viktor&Rolf, Maison Margiela Fragrances, Diesel Fragrances, Clarisonic, Atelier Cologne, Valentino Beauty, Mugler, Azzaro, Proenza Schouler, Cacharel, Paloma Picasso, Helena Rubinstein, YUE SAI, My Blend by Dr. Olivier Courtin, Diesel Parfums, Guy Laroche, L'oreal paris, Garnier, maybelline, nyx, essie, dark and lovely, mixa, niely, la roche posay, vichy, cerave, skinCeuticals, skinbetter science, le plus adapté à une personne qui a un budget ${budget} et une peau ${state.infos.infos[1]} et ${typePeau}, explique la raison de ton choix et donne le prix (sous la forme (X euros)). Si tu ne trouve pas, invente un produit crédible. Les éléments du json doivent être 'nom', 'raison', 'prix'`,
             },
           ],
           model: "gpt-3.5-turbo-1106",
@@ -112,7 +114,7 @@ export default function RoutinePage() {
             {
               role: "user",
               content: `Propose un nettoyant parmi les marques suivante : 
-              Lancôme, Giorgio Armani Beauty, Yves Saint Laurent Beauté, Kiehl's, Biotherm, Urban Decay, Ralph Lauren Fragrances, Shu Uemura, Viktor&Rolf, Maison Margiela Fragrances, Diesel Fragrances, Clarisonic, Atelier Cologne, Valentino Beauty, Mugler, Azzaro, Proenza Schouler, Cacharel, Paloma Picasso, Helena Rubinstein, YUE SAI, My Blend by Dr. Olivier Courtin, Diesel Parfums, Guy Laroche, L'oreal paris, Garnier, maybelline, nyx, essie, dark and lovely, mixa, niely, la roche posay, vichy, cerave, skinCeuticals, skinbetter science, le plus adapté à une personne qui a un budget ${budget} et une peau ${state.infos.infos[1]} et ${typePeau}, explique la raison de ton choix et donne le prix (sous la forme (X euros)). Les éléments du json doivent être 'nom', 'raison', 'prix'`,
+              Lancôme, Giorgio Armani Beauty, Yves Saint Laurent Beauté, Kiehl's, Biotherm, Urban Decay, Ralph Lauren Fragrances, Shu Uemura, Viktor&Rolf, Maison Margiela Fragrances, Diesel Fragrances, Clarisonic, Atelier Cologne, Valentino Beauty, Mugler, Azzaro, Proenza Schouler, Cacharel, Paloma Picasso, Helena Rubinstein, YUE SAI, My Blend by Dr. Olivier Courtin, Diesel Parfums, Guy Laroche, L'oreal paris, maybelline, nyx, essie, dark and lovely, mixa, niely, la roche posay, vichy, cerave, skinCeuticals, skinbetter science, le plus adapté à une personne qui a un budget ${budget} et une peau ${state.infos.infos[1]} et ${typePeau}, explique la raison de ton choix et donne le prix (sous la forme (X euros)). Si tu ne trouve pas, invente un produit crédible. Les éléments du json doivent être 'nom', 'raison', 'prix'`,
             },
           ],
           model: "gpt-3.5-turbo-1106",
@@ -137,7 +139,7 @@ export default function RoutinePage() {
             {
               role: "user",
               content: `Propose une lotion parmi les marques suivante : 
-              Lancôme, Giorgio Armani Beauty, Yves Saint Laurent Beauté, Kiehl's, Biotherm, Urban Decay, Ralph Lauren Fragrances, Shu Uemura, Viktor&Rolf, Maison Margiela Fragrances, Diesel Fragrances, Clarisonic, Atelier Cologne, Valentino Beauty, Mugler, Azzaro, Proenza Schouler, Cacharel, Paloma Picasso, Helena Rubinstein, YUE SAI, My Blend by Dr. Olivier Courtin, Diesel Parfums, Guy Laroche, L'oreal paris, Garnier, maybelline, nyx, essie, dark and lovely, mixa, niely, la roche posay, vichy, cerave, skinCeuticals, skinbetter science, le plus adapté à une personne qui a un budget ${budget} et une peau ${state.infos.infos[1]} et ${typePeau}, explique la raison de ton choix et donne le prix (sous la forme (X euros)). Les éléments du json doivent être 'nom', 'raison', 'prix'`,
+              Lancôme, Giorgio Armani Beauty, Yves Saint Laurent Beauté, Kiehl's, Biotherm, Urban Decay, Ralph Lauren Fragrances, Shu Uemura, Viktor&Rolf, Maison Margiela Fragrances, Diesel Fragrances, Clarisonic, Atelier Cologne, Valentino Beauty, Mugler, Azzaro, Proenza Schouler, Cacharel, Paloma Picasso, Helena Rubinstein, YUE SAI, My Blend by Dr. Olivier Courtin, Diesel Parfums, Guy Laroche, L'oreal paris, Garnier, maybelline, nyx, essie, dark and lovely, mixa, niely, la roche posay, vichy, cerave, skinCeuticals, skinbetter science, le plus adapté à une personne qui a un budget ${budget} et une peau ${state.infos.infos[1]} et ${typePeau}, explique la raison de ton choix et donne le prix (sous la forme (X euros)). Si tu ne trouve pas, invente un produit crédible. Les éléments du json doivent être 'nom', 'raison', 'prix'`,
             },
           ],
           model: "gpt-3.5-turbo-1106",
@@ -162,7 +164,7 @@ export default function RoutinePage() {
             {
               role: "user",
               content: `Propose un sérum parmi les marques suivante : 
-              Lancôme, Giorgio Armani Beauty, Yves Saint Laurent Beauté, Kiehl's, Biotherm, Urban Decay, Ralph Lauren Fragrances, Shu Uemura, Viktor&Rolf, Maison Margiela Fragrances, Diesel Fragrances, Clarisonic, Atelier Cologne, Valentino Beauty, Mugler, Azzaro, Proenza Schouler, Cacharel, Paloma Picasso, Helena Rubinstein, YUE SAI, My Blend by Dr. Olivier Courtin, Diesel Parfums, Guy Laroche, L'oreal paris, Garnier, maybelline, nyx, essie, dark and lovely, mixa, niely, la roche posay, vichy, cerave, skinCeuticals, skinbetter science, le plus adapté à une personne qui a un budget ${budget} et une peau ${state.infos.infos[1]} et ${typePeau}, explique la raison de ton choix et donne le prix (sous la forme (X euros)). Les éléments du json doivent être 'nom', 'raison', 'prix'`,
+              Lancôme, Giorgio Armani Beauty, Yves Saint Laurent Beauté, Kiehl's, Biotherm, Urban Decay, Ralph Lauren Fragrances, Shu Uemura, Viktor&Rolf, Maison Margiela Fragrances, Diesel Fragrances, Clarisonic, Atelier Cologne, Valentino Beauty, Mugler, Azzaro, Proenza Schouler, Cacharel, Paloma Picasso, Helena Rubinstein, YUE SAI, My Blend by Dr. Olivier Courtin, Diesel Parfums, Guy Laroche, L'oreal paris, maybelline, nyx, essie, dark and lovely, mixa, niely, la roche posay, vichy, cerave, skinCeuticals, skinbetter science, le plus adapté à une personne qui a un budget ${budget} et une peau ${state.infos.infos[1]} et ${typePeau}, explique la raison de ton choix et donne le prix (sous la forme (X euros)). Si tu ne trouve pas, invente un produit crédible. Les éléments du json doivent être 'nom', 'raison', 'prix'`,
             },
           ],
           model: "gpt-3.5-turbo-1106",
@@ -187,7 +189,7 @@ export default function RoutinePage() {
             {
               role: "user",
               content: `Propose un soin parmi les marques suivante : 
-              Lancôme, Giorgio Armani Beauty, Yves Saint Laurent Beauté, Kiehl's, Biotherm, Urban Decay, Ralph Lauren Fragrances, Shu Uemura, Viktor&Rolf, Maison Margiela Fragrances, Diesel Fragrances, Clarisonic, Atelier Cologne, Valentino Beauty, Mugler, Azzaro, Proenza Schouler, Cacharel, Paloma Picasso, Helena Rubinstein, YUE SAI, My Blend by Dr. Olivier Courtin, Diesel Parfums, Guy Laroche, L'oreal paris, Garnier, maybelline, nyx, essie, dark and lovely, mixa, niely, la roche posay, vichy, cerave, skinCeuticals, skinbetter science, le plus adapté à une personne qui a un budget ${budget} et une peau ${state.infos.infos[1]} et ${typePeau}, explique la raison de ton choix et donne le prix (sous la forme (X euros)). Les éléments du json doivent être 'nom', 'raison', 'prix'`,
+              Lancôme, Giorgio Armani Beauty, Yves Saint Laurent Beauté, Kiehl's, Biotherm, Urban Decay, Ralph Lauren Fragrances, Shu Uemura, Viktor&Rolf, Maison Margiela Fragrances, Diesel Fragrances, Clarisonic, Atelier Cologne, Valentino Beauty, Mugler, Azzaro, Proenza Schouler, Cacharel, Paloma Picasso, Helena Rubinstein, YUE SAI, My Blend by Dr. Olivier Courtin, Diesel Parfums, Guy Laroche, L'oreal paris, Garnier, maybelline, nyx, essie, dark and lovely, mixa, niely, la roche posay, vichy, cerave, skinCeuticals, skinbetter science, le plus adapté à une personne qui a un budget ${budget} et une peau ${state.infos.infos[1]} et ${typePeau}, explique la raison de ton choix et donne le prix (sous la forme (X euros)). Si tu ne trouve pas, invente un produit crédible. Les éléments du json doivent être 'nom', 'raison', 'prix'`,
             },
           ],
           model: "gpt-3.5-turbo-1106",
@@ -212,7 +214,7 @@ export default function RoutinePage() {
             {
               role: "user",
               content: `Propose un démaquillant parmi les marques suivante : 
-              Lancôme, Giorgio Armani Beauty, Yves Saint Laurent Beauté, Kiehl's, Biotherm, Urban Decay, Ralph Lauren Fragrances, Shu Uemura, Viktor&Rolf, Maison Margiela Fragrances, Diesel Fragrances, Clarisonic, Atelier Cologne, Valentino Beauty, Mugler, Azzaro, Proenza Schouler, Cacharel, Paloma Picasso, Helena Rubinstein, YUE SAI, My Blend by Dr. Olivier Courtin, Diesel Parfums, Guy Laroche, L'oreal paris, Garnier, maybelline, nyx, essie, dark and lovely, mixa, niely, la roche posay, vichy, cerave, skinCeuticals, skinbetter science, le plus adapté à une personne qui a un budget ${budget} et une peau ${state.infos.infos[1]} et ${typePeau}, explique la raison de ton choix et donne le prix (sous la forme (X euros)). Les éléments du json doivent être 'nom', 'raison', 'prix'`,
+              Lancôme, Giorgio Armani Beauty, Yves Saint Laurent Beauté, Kiehl's, Biotherm, Urban Decay, Ralph Lauren Fragrances, Shu Uemura, Viktor&Rolf, Maison Margiela Fragrances, Diesel Fragrances, Clarisonic, Atelier Cologne, Valentino Beauty, Mugler, Azzaro, Proenza Schouler, Cacharel, Paloma Picasso, Helena Rubinstein, YUE SAI, My Blend by Dr. Olivier Courtin, Diesel Parfums, Guy Laroche, L'oreal paris, maybelline, nyx, essie, dark and lovely, mixa, niely, la roche posay, vichy, cerave, skinCeuticals, skinbetter science, le plus adapté à une personne qui a un budget ${budget} et une peau ${state.infos.infos[1]} et ${typePeau}, explique la raison de ton choix et donne le prix (sous la forme (X euros)). Si tu ne trouve pas, invente un produit crédible. Les éléments du json doivent être 'nom', 'raison', 'prix'`,
             },
           ],
           model: "gpt-3.5-turbo-1106",
@@ -237,7 +239,7 @@ export default function RoutinePage() {
             {
               role: "user",
               content: `Propose un baume à lèvres parmi les marques suivante : 
-              Lancôme, Giorgio Armani Beauty, Yves Saint Laurent Beauté, Kiehl's, Biotherm, Urban Decay, Ralph Lauren Fragrances, Shu Uemura, Viktor&Rolf, Maison Margiela Fragrances, Diesel Fragrances, Clarisonic, Atelier Cologne, Valentino Beauty, Mugler, Azzaro, Proenza Schouler, Cacharel, Paloma Picasso, Helena Rubinstein, YUE SAI, My Blend by Dr. Olivier Courtin, Diesel Parfums, Guy Laroche, L'oreal paris, Garnier, maybelline, nyx, essie, dark and lovely, mixa, niely, la roche posay, vichy, cerave, skinCeuticals, skinbetter science, le plus adapté à une personne qui a un budget ${budget} et une peau ${state.infos.infos[1]} et ${typePeau}, explique la raison de ton choix et donne le prix (sous la forme (X euros)). Les éléments du json doivent être 'nom', 'raison', 'prix'`,
+              Lancôme, Giorgio Armani Beauty, Yves Saint Laurent Beauté, Kiehl's, Biotherm, Urban Decay, Ralph Lauren Fragrances, Shu Uemura, Viktor&Rolf, Maison Margiela Fragrances, Diesel Fragrances, Clarisonic, Atelier Cologne, Valentino Beauty, Mugler, Azzaro, Proenza Schouler, Cacharel, Paloma Picasso, Helena Rubinstein, YUE SAI, My Blend by Dr. Olivier Courtin, Diesel Parfums, Guy Laroche, L'oreal paris, Garnier, maybelline, nyx, essie, dark and lovely, mixa, niely, la roche posay, vichy, cerave, skinCeuticals, skinbetter science, le plus adapté à une personne qui a un budget ${budget} et une peau ${state.infos.infos[1]} et ${typePeau}, explique la raison de ton choix et donne le prix (sous la forme (X euros)). Si tu ne trouve pas, invente un produit crédible. Les éléments du json doivent être 'nom', 'raison', 'prix'`,
             },
           ],
           model: "gpt-3.5-turbo-1106",
@@ -276,7 +278,7 @@ export default function RoutinePage() {
   return (
     <section className={styles.GlobalPage}>
       <div className={styles.topPage}>
-        <h3>Voici votre routine personnalisée</h3>
+        <h1>Voici votre routine personnalisée</h1>
       </div>
       <div>
         <div>
@@ -300,7 +302,10 @@ export default function RoutinePage() {
                     nom={product.nom && product.nom}
                     prix={product.prix && product.prix}
                   />
-                  <button className={styles.addCart}  onClick={() => removeFromCart(index)}>
+                  <button
+                    className={styles.addCart}
+                    onClick={() => removeFromCart(index)}
+                  >
                     Retirer du panier
                   </button>
                 </div>
@@ -346,7 +351,10 @@ export default function RoutinePage() {
                   }
                   prix={reponseDemaquillant.prix && reponseDemaquillant.prix}
                 />
-                <button className={styles.addCart}  onClick={() => toggleCartItem(reponseDemaquillant)}>
+                <button
+                  className={styles.addCart}
+                  onClick={() => toggleCartItem(reponseDemaquillant)}
+                >
                   {panier.some((item) => item.nom === reponseDemaquillant.nom)
                     ? "Retirer du panier"
                     : "Ajouter au panier"}
@@ -374,7 +382,10 @@ export default function RoutinePage() {
                   }
                   prix={reponseNettoyant.prix && reponseNettoyant.prix}
                 />
-                <button className={styles.addCart}  onClick={() => toggleCartItem(reponseNettoyant)}>
+                <button
+                  className={styles.addCart}
+                  onClick={() => toggleCartItem(reponseNettoyant)}
+                >
                   {panier.some((item) => item.nom === reponseNettoyant.nom)
                     ? "Retirer du panier"
                     : "Ajouter au panier"}
@@ -401,7 +412,10 @@ export default function RoutinePage() {
                     }
                     prix={reponseLotion.prix && reponseLotion.prix}
                   />
-                  <button className={styles.addCart}  onClick={() => toggleCartItem(reponseLotion)}>
+                  <button
+                    className={styles.addCart}
+                    onClick={() => toggleCartItem(reponseLotion)}
+                  >
                     {panier.some((item) => item.nom === reponseLotion.nom)
                       ? "Retirer du panier"
                       : "Ajouter au panier"}
@@ -428,7 +442,10 @@ export default function RoutinePage() {
                     }
                     prix={reponseSerum.prix && reponseSerum.prix}
                   />
-                  <button className={styles.addCart}  onClick={() => toggleCartItem(reponseSerum)}>
+                  <button
+                    className={styles.addCart}
+                    onClick={() => toggleCartItem(reponseSerum)}
+                  >
                     {panier.some((item) => item.nom === reponseSerum.nom)
                       ? "Retirer du panier"
                       : "Ajouter au panier"}
@@ -455,7 +472,10 @@ export default function RoutinePage() {
                     }
                     prix={reponseContour.prix && reponseContour.prix}
                   />
-                  <button className={styles.addCart}  onClick={() => toggleCartItem(reponseContour)}>
+                  <button
+                    className={styles.addCart}
+                    onClick={() => toggleCartItem(reponseContour)}
+                  >
                     {panier.some((item) => item.nom === reponseContour.nom)
                       ? "Retirer du panier"
                       : "Ajouter au panier"}
@@ -483,7 +503,10 @@ export default function RoutinePage() {
                     }
                     prix={reponseCreme.prix && reponseCreme.prix}
                   />
-                  <button className={styles.addCart} onClick={() => toggleCartItem(reponseCreme)}>
+                  <button
+                    className={styles.addCart}
+                    onClick={() => toggleCartItem(reponseCreme)}
+                  >
                     {panier.some((item) => item.nom === reponseCreme.nom)
                       ? "Retirer du panier"
                       : "Ajouter au panier"}
@@ -509,7 +532,10 @@ export default function RoutinePage() {
                     }
                     prix={reponseLevres.prix && reponseLevres.prix}
                   />
-                  <button className={styles.addCart}  onClick={() => toggleCartItem(reponseLevres)}>
+                  <button
+                    className={styles.addCart}
+                    onClick={() => toggleCartItem(reponseLevres)}
+                  >
                     {panier.some((item) => item.nom === reponseLevres.nom)
                       ? "Retirer du panier"
                       : "Ajouter au panier"}
@@ -518,6 +544,28 @@ export default function RoutinePage() {
               </div>
             </div>
           </div>
+          <Player
+            className={styles.player}
+            component={MyComposition}
+            inputProps={{
+              reponseDemaquillant,
+              reponseNettoyant,
+              reponseLotion,
+              reponseSerum,
+              reponseContour,
+              reponseCreme,
+              reponseLevres,
+            }}
+            durationInFrames={2000}
+            compositionWidth={1280}
+            compositionHeight={720}
+            fps={60}
+            style={{
+              width: 1280,
+              height: 720,
+            }}
+            controls
+          ></Player>
         </section>
       ) : (
         <p>En cours de chargement...</p>

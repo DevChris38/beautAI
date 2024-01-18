@@ -7,14 +7,14 @@
   width: 100%;
   margin-bottom: 2rem;
 }
-.topPage{
+.topPage {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   height: 5rem;
 }
-.topPageButton{
+.topPageButton {
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
@@ -29,38 +29,53 @@
   margin-bottom: 2rem;
   width: 100vw;
 }
-.basketContainer{
+.basketContainer {
   width: 1rem;
   height: 2rem;
   margin: 2rem;
 }
-.basketImage{
+.basketImage {
   width: 1.5rem;
 }
-.panierContainer{
-font-size: 2rem;
-display: flex;
-justify-content: center;
-align-items: center;
+.panierContainer {
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.routinePageContainer{
+.routinePageContainer {
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.divContainer{
+
+.routinePageContainer p {
+  font-size: 1.5rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: black;
+}
+
+.routinePageContainer h4 {
+  font-size: 2rem;
+}
+
+.divContainer {
   width: 100%;
 }
 
-.productPanier{
+.productPanier {
   display: flex;
   flex-direction: column;
   gap: 2rem;
 }
 
-h2,h3,
+h2,
+h3,
 p {
   color: black;
 }
@@ -74,7 +89,6 @@ p {
   align-items: center;
   margin: 0;
   background-color: #e32847;
-  font-size: 1rem;
   font-weight: bold;
   border-radius: 0%;
   -webkit-box-shadow: 0px 0px 18px -2px rgba(0, 0, 0, 0.5);
@@ -82,7 +96,7 @@ p {
   width: clamp(400px, 30vw, 800px);
 }
 
-.cartProduct{
+.cartProduct {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -96,8 +110,7 @@ p {
 }
 
 @media screen and (width > 768px) {
-  .routinePageContainer{
+  .routinePageContainer {
     width: 80%;
-
   }
 }

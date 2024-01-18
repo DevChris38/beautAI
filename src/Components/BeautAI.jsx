@@ -20,10 +20,6 @@ const marks = [
     value: 3,
     label: "€€€",
   },
-  {
-    value: 4,
-    label: "€€€€",
-  },
 ];
 
 const Types = [
@@ -75,13 +71,12 @@ function BeautAI() {
 
   let budget = 1;
   let pigmentation = "pale";
-  let type = "grasse";
+  let type = 1;
 
   const handleClick = (number, info) => {
     if (count === number - 1) {
       setCount(number);
       setInfos([...infos, info]);
-      console.log(infos);
     }
   };
 
@@ -103,7 +98,6 @@ function BeautAI() {
 
   const typeChange = (e) => {
     type = e.target.value;
-    console.log(e);
   };
 
   return (
@@ -151,6 +145,7 @@ function BeautAI() {
               <Select
                 labelId="demo-simple-select-helper-label"
                 id="demo-simple-select-helper"
+                defaultValue={"pâle"}
                 onChange={pigmentationChange}
               >
                 <MenuItem value="">
@@ -272,7 +267,7 @@ function BeautAI() {
           </div>
         ) : null*/}
         {count >= 3 ? (
-          <Link to={"/result"}>
+          <Link to={"/routine"} state={{ infos: { infos } }}>
             <button type="submit" onClick={() => handleClick(8)}>
               Obtenir la réponse
             </button>

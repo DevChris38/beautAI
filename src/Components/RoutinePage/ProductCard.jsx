@@ -1,16 +1,18 @@
 import PropTypes from "prop-types";
 import style from "./ProductCard.module.css";
 
-export default function ProductCard({ nom, imageURL, conseils_utilisation }) {
+export default function ProductCard({ nom, conseils_utilisation, prix }) {
   return (
     <section className={style.globalCard}>
       <div className={style.CardContainer}>
         <div className={style.CardInformation}>
           <div className={style.descirptionContainer}>
-            <p className={style.title}>{nom}</p>
-            <p>{conseils_utilisation}</p>
+            {nom ? <p className={style.title}>{nom}</p> : null}
+            {conseils_utilisation ? (
+              <p className={style.utilisation}>{conseils_utilisation}</p>
+            ) : null}
+            {prix ? <p>{prix}</p> : null}
           </div>
-          <img className={style.imageContainer} src={imageURL} alt={nom} />
         </div>
         <button className={style.addCard}>Ajouter au panier</button>
       </div>
@@ -19,7 +21,7 @@ export default function ProductCard({ nom, imageURL, conseils_utilisation }) {
 }
 
 ProductCard.propTypes = {
-  imageURL: PropTypes.string.isRequired,
-  nom: PropTypes.string.isRequired,
-  conseils_utilisation: PropTypes.string.isRequired,
+  nom: PropTypes.string,
+  conseils_utilisation: PropTypes.string,
+  prix: PropTypes.string,
 };

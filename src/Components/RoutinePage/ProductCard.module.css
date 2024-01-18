@@ -6,8 +6,10 @@
   display: flex;
   flex-direction: column;
   margin: 0 2rem 0 2rem;
-  -webkit-box-shadow: 0px 0px 18px -2px rgba(0,0,0,0.5); 
-  box-shadow: 0px 0px 18px -2px rgba(0,0,0,0.5);
+  -webkit-box-shadow: 0px 0px 18px -2px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 18px -2px rgba(0, 0, 0, 0.5);
+  padding: 1%;
+  width: clamp(400px, 30vw, 800px);
 }
 .imageContainer {
   padding: 1rem;
@@ -36,9 +38,9 @@
   justify-content: center;
   align-items: center;
   border: #e32847 solid 1px;
-  height: 22vh;
-  max-width: 25rem;
-
+  /*height: 22vh;*/
+  width: 100%;
+  padding: 1rem 0;
 }
 
 .descirptionContainer {
@@ -50,6 +52,12 @@
   margin: 0 2rem 0 2rem;
 }
 
-.title{
-    font-weight: bold;
+.title {
+  font-weight: bold;
+  margin-bottom: 2%;
+  text-align: center;
+}
+
+.utilisation {
+  margin-bottom: 2%;
 }

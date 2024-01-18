@@ -54,7 +54,7 @@ nav {
 .BeautAI__section__questionLeft {
   display: flex;
   flex-direction: column;
-  width: 40%;
+  width: 70%;
   height: 20vh;
   padding: 2%;
   right: 0%;
@@ -70,7 +70,7 @@ nav {
 .BeautAI__section__questionRight {
   display: flex;
   flex-direction: column;
-  width: 40%;
+  width: 70%;
   height: 20vh;
   padding: 2%;
   right: 0%;
@@ -136,4 +136,13 @@ footer {
 
 .slider {
   margin-top: 5vh;
+}
+
+@media screen and (width > 768px) {
+  .BeautAI__section__questionLeft {
+    width: 40%;
+  }
+  .BeautAI__section__questionRight {
+    width: 40%;
+  }
 }

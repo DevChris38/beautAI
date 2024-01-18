@@ -71,7 +71,7 @@ export default function RoutinePage() {
   }
 
   const openai = new OpenAI({
-    apiKey: "",
+    apiKey: "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",
     dangerouslyAllowBrowser: true,
   });
 

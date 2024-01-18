@@ -5,6 +5,7 @@ import App from "./App.jsx";
 // import BeautUI from "./Components/BeautUI";
 import RoutinePage from "./Components/RoutinePage/RoutinePage.jsx";
 import "./index.css";
+import RoutineHomePage from "./Components/RoutineHomePage/RoutineHomePage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
   //   path: "/beautui",
   //   element: <BeautUI />,
   // },
+  {
+    path: "/routineHome",
+    element: <RoutineHomePage />,
+  },
   {
     path: "/routine",
     element: <RoutinePage />,

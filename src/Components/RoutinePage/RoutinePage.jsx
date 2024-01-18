@@ -3,6 +3,11 @@ import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import ProductCard from "./ProductCard";
 import styles from "./RoutinePage.module.css";
+import * as React from "react";
+import Popover from "@mui/material/Popover";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import basket from "../../assets/basket.png"
 
 export default function RoutinePage() {
   const [reponseDemaquillant, setReponseDemaquillant] = useState();
@@ -13,6 +18,19 @@ export default function RoutinePage() {
   const [reponseCreme, setReponseCreme] = useState();
   const [reponseLevres, setReponseLevres] = useState();
   let { state } = useLocation();
+  const [panier, setPanier] = useState([]);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? "simple-popover" : undefined;
 
   let budget;
 
@@ -29,7 +47,7 @@ export default function RoutinePage() {
   }
 
   let typePeau;
-  console.log(state.infos.infos[2]);
+  // console.log(state.infos.infos[2]);
 
   switch (state.infos.infos[2]) {
     case 1:
@@ -53,7 +71,7 @@ export default function RoutinePage() {
   }
 
   const openai = new OpenAI({
-    apiKey: "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",
+    apiKey: "",
     dangerouslyAllowBrowser: true,
   });
 
@@ -79,8 +97,9 @@ export default function RoutinePage() {
           return JSON.parse(completion.choices[0].message.content);
         })
         .then((go) => {
-          console.log(go);
+          // console.log(go);
           setReponseCreme(go);
+          setPanier((prevPanier) => [...prevPanier, go]);
         });
 
       openai.chat.completions
@@ -103,8 +122,9 @@ export default function RoutinePage() {
           return JSON.parse(completion.choices[0].message.content);
         })
         .then((go) => {
-          console.log(go);
+          // console.log(go);
           setReponseNettoyant(go);
+          setPanier((prevPanier) => [...prevPanier, go]);
         });
 
       openai.chat.completions
@@ -127,8 +147,9 @@ export default function RoutinePage() {
           return JSON.parse(completion.choices[0].message.content);
         })
         .then((go) => {
-          console.log(go);
+          // console.log(go);
           setReponseLotion(go);
+          setPanier((prevPanier) => [...prevPanier, go]);
         });
 
       openai.chat.completions
@@ -151,8 +172,9 @@ export default function RoutinePage() {
           return JSON.parse(completion.choices[0].message.content);
         })
         .then((go) => {
-          console.log(go);
+          // console.log(go);
           setReponseSerum(go);
+          setPanier((prevPanier) => [...prevPanier, go]);
         });
 
       openai.chat.completions
@@ -175,8 +197,9 @@ export default function RoutinePage() {
           return JSON.parse(completion.choices[0].message.content);
         })
         .then((go) => {
-          console.log(go);
+          // console.log(go);
           setReponseContour(go);
+          setPanier((prevPanier) => [...prevPanier, go]);
         });
 
       openai.chat.completions
@@ -199,8 +222,9 @@ export default function RoutinePage() {
           return JSON.parse(completion.choices[0].message.content);
         })
         .then((go) => {
-          console.log(go);
+          // console.log(go);
           setReponseDemaquillant(go);
+          setPanier((prevPanier) => [...prevPanier, go]);
         });
 
       openai.chat.completions
@@ -223,17 +247,57 @@ export default function RoutinePage() {
           return JSON.parse(completion.choices[0].message.content);
         })
         .then((go) => {
-          console.log(go);
+          // console.log(go);
           setReponseLevres(go);
+          setPanier((prevPanier) => [...prevPanier, go]);
         });
     };
 
     ai();
   }, []);
 
+  console.log(panier);
   return (
     <section className={styles.GlobalPage}>
+      <div className={styles.topPage}>
       <h2>Voici votre routine personnalisée</h2>
+      <Button
+            aria-describedby={id}
+            variant="contained"
+            onClick={handleClick}
+            className={styles.basketContainer}
+          >
+            <img src={basket} className={styles.basketImage} alt="" />
+          </Button> 
+          </div>
+      <div>
+        <div>
+
+          <Popover
+            id={id}
+            open={open}
+            anchorEl={anchorEl}
+            onClose={handleClose}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "left",
+            }}
+          >
+            <Typography className={styles.panierContainer}>
+            <h2>Votre panier</h2>
+            </Typography>
+            <Typography sx={{ p: 2 }} className={styles.productPanier}>
+              {panier.map((product, index) => (
+                <ProductCard 
+                  key={index}
+                  nom={product.nom && product.nom}
+                  prix={product.prix && product.prix}
+                />
+              ))}
+            </Typography>
+          </Popover>
+        </div>
+      </div>
       {reponseDemaquillant &&
       reponseNettoyant &&
       reponseLotion &&

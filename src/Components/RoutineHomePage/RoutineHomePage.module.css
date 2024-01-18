@@ -2,69 +2,150 @@
   display: flex;
   justify-content: left;
   align-items: center;
-
+  flex-direction: column;
 }
 
 .buttonContainer {
-  z-index: 1;
-  position:absolute;
-  margin-left: 10%;
   color: black;
   width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+.buttonTop{
+  background-color: #e32847;
+  font-weight: bold;
+  width: 50%;
+  margin: 1rem;
+}
+
+.topLinkButton{
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-items: center;
+}
+
+.buttonBannerContainer{
+display: none;
 }
 
 .imagePosition {
   z-index: 0;
   width: 100%;
-  
+  display: flex;
+  margin-bottom: 2rem;
 }
-.pageContainer{
-   display: flex;
-   flex-direction: column;
-align-items: center;
+.topContainer {
+  display: flex;
+  z-index: 1;
+  color: black;
+  position: relative;
+  align-items: center;
+  justify-content: flex-end;
+}
+.titleTopContainer {
+  display: flex;
+  z-index: 1;
+  color: black;
+  position: absolute;
+  justify-content: center;
+  width: 50%;
+  font-size: 1rem;
 }
 
-.BottomPageContainer{
-    max-width: 80rem;
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.BottomPageContainer {
+  max-width: 80rem;
 }
 
 .titleContainer {
   color: black;
-  margin: 2rem;
+  margin: 2rem 2rem 0 2rem;
+}
+
+.titleBottomBanner{
+  color: black;
+  margin-top: 2rem;
 }
 
 .ArticleContainer {
   color: black;
-  margin: 2rem;
-  text-align: justify;
-  line-height: 200%;
+  margin: 1rem 3rem 0 3rem;
+
+  line-height: 160%;
   font-size: 120%;
-
 }
-.bottomButtonContainer{
+.bottomButtonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: 100%;
+}
+
+.bottomButton {
+  background-color: #e32847;
+  font-weight: bold;
+margin: 2rem;
+}
+
+.articleImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.articleImagePosition {
+  width: 100%;
+  max-width: 45rem;
+  margin: 2rem 0 2rem 0;
+}
+
+@media screen and (width > 768px) {
+  .buttonContainer {
+    z-index: 1;
+    position: absolute;
+    flex-direction: column;
+    align-items: flex-end;
+    flex-direction: column;
+  }
+  .buttonContainer {
+display: none;
+  }
+  .buttonBannerContainer{
+    z-index: 1;
+    position: absolute;
+    color: black;
+    width: 50%;
+    height: 50%;
     display: flex;
-    justify-content: center;
     align-items: center;
-    align-content: center;
-    width: 100%;
-}
-
-.bottomButton{
-background-color: #e32847;
-font-weight: bold;
-margin: 0 2rem 2rem 2rem;
-}
-
-.articleImage{
-    display: flex;
     justify-content: center;
-    align-items: center;
-    margin-top: 1rem;
-    width: 100%;
-}
-
-.articleImagePosition{
-    width: 100%;
-    max-width: 45rem;
-    margin: 2rem 0 2rem 0;
+    flex-direction: column;
+  }
+  .titleTopContainer {
+   margin-top: 2rem;
+   height: 100%;
+   width: 100%;
+   font-size: 2rem;
+  }
+  .bottomButton {
+    background-color: #e32847;
+    font-weight: bold;
+  }
+  .titleBottomBanner{
+  display: none;
+  }
+  .buttonTop{
+    display: none;
+  }
 }

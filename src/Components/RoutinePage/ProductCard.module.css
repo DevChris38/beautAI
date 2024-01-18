@@ -22,7 +22,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1rem;
+  margin: 0;
   background-color: #e32847;
   font-size: 1rem;
   font-weight: bold;

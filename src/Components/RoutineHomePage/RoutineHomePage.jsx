@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import routineHome from "../../assets/RoutineHome.png";
+import routineHome from "../../assets/RoutineHome.jpg";
 import style from "./RoutineHomePage.module.css";
 import nettoyageHuile from "../../assets/nettoyageHuile.jpg";
 import nettoyageEau from "../../assets/nettoyageEau.jpg";
@@ -16,20 +16,32 @@ export default function RoutineHomePage() {
   return (
     <section className={style.pageContainer}>
       <div className={style.imageContainer}>
-        <div className={style.buttonContainer}>
-          <h3>Routine Visage: les étapes du Layering</h3>
+        <div className={style.topContainer}>
+          <img className={style.imagePosition} src={routineHome}></img>
+          <div className={style.buttonBannerContainer}>
+          <h3 className={style.titleTopContainer}>Routine Visage: les étapes du Layering</h3>
+          
           <Link to={"/BeautAI"}>
             <button className={style.bottomButton}>
               Découvrir votre routine
             </button>
           </Link>
         </div>
-        <img className={style.imagePosition} src={routineHome}></img>
+        </div>
+        <div className={style.buttonContainer}>
+          <Link className={style.topLinkButton} to={"/BeautAI"}>
+          <h3 className={style.titleBottomBanner}>Routine Visage: les étapes du Layering</h3>
+          
+            <button className={style.buttonTop}>
+              Découvrir votre routine
+            </button>
+          </Link>
+        </div>
       </div>
       <div className={style.BottomPageContainer}>
-        <h2 className={style.titleContainer}>
+        <h3 className={style.titleContainer}>
           Une Approche Stratégique pour une Peau Rayonnante
-        </h2>
+        </h3>
         <article className={style.ArticleContainer}>
           <div className={style.articleImage}>
             <img className={style.articleImagePosition} src={skincare}></img>

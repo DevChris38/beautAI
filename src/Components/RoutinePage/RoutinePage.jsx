@@ -71,7 +71,7 @@ export default function RoutinePage() {
   }
 
   const openai = new OpenAI({
-    apiKey: "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",
+    apiKey: "",
     dangerouslyAllowBrowser: true,
   });
 
@@ -262,6 +262,16 @@ export default function RoutinePage() {
       return newPanier;
     });
   };
+
+  const toggleCartItem = (product) => {
+    const isProductInCart = panier.some((item) => item.nom === product.nom);
+
+    if (isProductInCart) {
+      removeFromCart(product.nom);
+    } else {
+      setPanier((prevPanier) => [...prevPanier, product]);
+    }
+  };
   console.log(panier);
   return (
     <section className={styles.GlobalPage}>
@@ -284,18 +294,18 @@ export default function RoutinePage() {
               <h2>Votre panier</h2>
             </Typography>
             <Typography sx={{ p: 2 }} className={styles.productPanier}>
-        {panier.map((product, index) => (
-          <div key={index}>
-            <ProductCard
-              nom={product.nom && product.nom}
-              prix={product.prix && product.prix}
-            />
-            <button onClick={() => removeFromCart(index)}>
-              Retirer du panier
-            </button>
-          </div>
-        ))}
-      </Typography>
+              {panier.map((product, index) => (
+                <div className={styles.cartProduct} key={index}>
+                  <ProductCard
+                    nom={product.nom && product.nom}
+                    prix={product.prix && product.prix}
+                  />
+                  <button className={styles.addCart}  onClick={() => removeFromCart(index)}>
+                    Retirer du panier
+                  </button>
+                </div>
+              ))}
+            </Typography>
           </Popover>
         </div>
       </div>
@@ -336,6 +346,11 @@ export default function RoutinePage() {
                   }
                   prix={reponseDemaquillant.prix && reponseDemaquillant.prix}
                 />
+                <button className={styles.addCart}  onClick={() => toggleCartItem(reponseDemaquillant)}>
+                  {panier.some((item) => item.nom === reponseDemaquillant.nom)
+                    ? "Retirer du panier"
+                    : "Ajouter au panier"}
+                </button>
               </div>
             </div>
 
@@ -350,6 +365,7 @@ export default function RoutinePage() {
                 nettoyant visage sous peine de boucher vos pores et créer des
                 imperfections.
               </p>
+
               <div className={styles.cardPosition}>
                 <ProductCard
                   nom={reponseNettoyant.nom && reponseNettoyant.nom}
@@ -358,116 +374,147 @@ export default function RoutinePage() {
                   }
                   prix={reponseNettoyant.prix && reponseNettoyant.prix}
                 />
+                <button className={styles.addCart}  onClick={() => toggleCartItem(reponseNettoyant)}>
+                  {panier.some((item) => item.nom === reponseNettoyant.nom)
+                    ? "Retirer du panier"
+                    : "Ajouter au panier"}
+                </button>
               </div>
-            </div>
 
-            <div className={styles.divContainer}>
-              <h4 className={styles.titleContainer}>
-                Etape 3 : Appliquer une lotion
-              </h4>
-              <p className={styles.descriptionContainer}>
-                Lorsque l’on rince sa peau à l’eau, une fine couche de calcaire
-                vient se coller à l’épiderme. Résultat ? Beaucoup de personnes
-                ressentent des tiraillements, sensation de sécheresse et
-                inconfort après avoir nettoyer leur visage. Pour contrer cet
-                effet négatif, il faut rééquilibrer la peau et la rincer du
-                calcaire en appliquant une lotion tonique.
-              </p>
-              <div className={styles.cardPosition}>
-                <ProductCard
-                  nom={reponseLotion.nom && reponseLotion.nom}
-                  conseils_utilisation={
-                    reponseLotion.raison && reponseLotion.raison
-                  }
-                  prix={reponseLotion.prix && reponseLotion.prix}
-                />
+              <div className={styles.divContainer}>
+                <h4 className={styles.titleContainer}>
+                  Etape 3 : Appliquer une lotion
+                </h4>
+                <p className={styles.descriptionContainer}>
+                  Lorsque l’on rince sa peau à l’eau, une fine couche de
+                  calcaire vient se coller à l’épiderme. Résultat ? Beaucoup de
+                  personnes ressentent des tiraillements, sensation de
+                  sécheresse et inconfort après avoir nettoyer leur visage. Pour
+                  contrer cet effet négatif, il faut rééquilibrer la peau et la
+                  rincer du calcaire en appliquant une lotion tonique.
+                </p>
+                <div className={styles.cardPosition}>
+                  <ProductCard
+                    nom={reponseLotion.nom && reponseLotion.nom}
+                    conseils_utilisation={
+                      reponseLotion.raison && reponseLotion.raison
+                    }
+                    prix={reponseLotion.prix && reponseLotion.prix}
+                  />
+                  <button className={styles.addCart}  onClick={() => toggleCartItem(reponseLotion)}>
+                    {panier.some((item) => item.nom === reponseLotion.nom)
+                      ? "Retirer du panier"
+                      : "Ajouter au panier"}
+                  </button>
+                </div>
               </div>
-            </div>
 
-            <div className={styles.divContainer}>
-              <h4 className={styles.titleContainer}>
-                Etape 4 : Traiter sa peau avec un sérum
-              </h4>
-              <p className={styles.descriptionContainer}>
-                Le sérum est un soin traitant concentré, riche en actif. Il va
-                traiter en profondeur la problématique que vous avez et
-                compléter l’action de la crème hydratante. Il est léger et
-                pénètre rapidement la peau, aucun risque de finir luisante avec
-                lui 😉 Il s’applique avant la crème hydratante.
-              </p>
-              <div className={styles.cardPosition}>
-                <ProductCard
-                  nom={reponseSerum.nom && reponseSerum.nom}
-                  conseils_utilisation={
-                    reponseSerum.raison && reponseSerum.raison
-                  }
-                  prix={reponseSerum.prix && reponseSerum.prix}
-                />
+              <div className={styles.divContainer}>
+                <h4 className={styles.titleContainer}>
+                  Etape 4 : Traiter sa peau avec un sérum
+                </h4>
+                <p className={styles.descriptionContainer}>
+                  Le sérum est un soin traitant concentré, riche en actif. Il va
+                  traiter en profondeur la problématique que vous avez et
+                  compléter l’action de la crème hydratante. Il est léger et
+                  pénètre rapidement la peau, aucun risque de finir luisante
+                  avec lui 😉 Il s’applique avant la crème hydratante.
+                </p>
+                <div className={styles.cardPosition}>
+                  <ProductCard
+                    nom={reponseSerum.nom && reponseSerum.nom}
+                    conseils_utilisation={
+                      reponseSerum.raison && reponseSerum.raison
+                    }
+                    prix={reponseSerum.prix && reponseSerum.prix}
+                  />
+                  <button className={styles.addCart}  onClick={() => toggleCartItem(reponseSerum)}>
+                    {panier.some((item) => item.nom === reponseSerum.nom)
+                      ? "Retirer du panier"
+                      : "Ajouter au panier"}
+                  </button>
+                </div>
               </div>
-            </div>
 
-            <div className={styles.divContainer}>
-              <h4 className={styles.titleContainer}>
-                Etape 5 : Contour des yeux
-              </h4>
-              <p className={styles.descriptionContainer}>
-                Non, il ne faut pas attendre les premières rides ou ridules de
-                déshydratation pour prendre soin de son contour de l’oeil.
-                Souvent mise à rude épreuve avec les correcteurs et le
-                maquillage qu’on lui impose, il est important de le traiter pour
-                éviter de l’abîmer.
-              </p>
-              <div className={styles.cardPosition}>
-                <ProductCard
-                  nom={reponseContour.nom && reponseContour.nom}
-                  conseils_utilisation={
-                    reponseContour.raison && reponseContour.raison
-                  }
-                  prix={reponseContour.prix && reponseContour.prix}
-                />
+              <div className={styles.divContainer}>
+                <h4 className={styles.titleContainer}>
+                  Etape 5 : Contour des yeux
+                </h4>
+                <p className={styles.descriptionContainer}>
+                  Non, il ne faut pas attendre les premières rides ou ridules de
+                  déshydratation pour prendre soin de son contour de l’oeil.
+                  Souvent mise à rude épreuve avec les correcteurs et le
+                  maquillage qu’on lui impose, il est important de le traiter
+                  pour éviter de l’abîmer.
+                </p>
+                <div className={styles.cardPosition}>
+                  <ProductCard
+                    nom={reponseContour.nom && reponseContour.nom}
+                    conseils_utilisation={
+                      reponseContour.raison && reponseContour.raison
+                    }
+                    prix={reponseContour.prix && reponseContour.prix}
+                  />
+                  <button className={styles.addCart}  onClick={() => toggleCartItem(reponseContour)}>
+                    {panier.some((item) => item.nom === reponseContour.nom)
+                      ? "Retirer du panier"
+                      : "Ajouter au panier"}
+                  </button>
+                </div>
               </div>
-            </div>
 
-            <div className={styles.divContainer}>
-              <h4 className={styles.titleContainer}>
-                Etape 6 : Hydrater la peau avec une crème hydratante
-              </h4>
-              <p className={styles.descriptionContainer}>
-                La crème hydratante va compléter l’action du sérum et apporter
-                la douceur et le confort à la peau. Vous pouvez également opter
-                pour un baume, une huile végétale simple ou une huile visage
-                naturelle en substitution. Seul votre ressenti et vos envies
-                comptent 😉 Cette étape est indispensable le matin et le soir.
-              </p>
-              <div className={styles.cardPosition}>
-                <ProductCard
-                  nom={reponseCreme.nom && reponseCreme.nom}
-                  conseils_utilisation={
-                    reponseCreme.raison && reponseCreme.raison
-                  }
-                  prix={reponseCreme.prix && reponseCreme.prix}
-                />
+              <div className={styles.divContainer}>
+                <h4 className={styles.titleContainer}>
+                  Etape 6 : Hydrater la peau avec une crème hydratante
+                </h4>
+                <p className={styles.descriptionContainer}>
+                  La crème hydratante va compléter l’action du sérum et apporter
+                  la douceur et le confort à la peau. Vous pouvez également
+                  opter pour un baume, une huile végétale simple ou une huile
+                  visage naturelle en substitution. Seul votre ressenti et vos
+                  envies comptent 😉 Cette étape est indispensable le matin et
+                  le soir.
+                </p>
+                <div className={styles.cardPosition}>
+                  <ProductCard
+                    nom={reponseCreme.nom && reponseCreme.nom}
+                    conseils_utilisation={
+                      reponseCreme.raison && reponseCreme.raison
+                    }
+                    prix={reponseCreme.prix && reponseCreme.prix}
+                  />
+                  <button className={styles.addCart} onClick={() => toggleCartItem(reponseCreme)}>
+                    {panier.some((item) => item.nom === reponseCreme.nom)
+                      ? "Retirer du panier"
+                      : "Ajouter au panier"}
+                  </button>
+                </div>
               </div>
-            </div>
 
-            <div className={styles.divContainer}>
-              <h4 className={styles.titleContainer}>
-                Etape 7 : Hydratation des lèvres
-              </h4>
-              <p className={styles.descriptionContainer}>
-                Les lèvres ne sont pas à négliger. Vous n’appliquerez pas un
-                rouge à lèvres sur des lèvres sèches et abîmées ! Il faut donc
-                les hydrater et les nourrir pour qu’elles restent douces et
-                lisses.
-              </p>
-              <div className={styles.cardPosition}>
-                <ProductCard
-                  nom={reponseLevres.nom && reponseLevres.nom}
-                  conseils_utilisation={
-                    reponseLevres.raison && reponseLevres.raison
-                  }
-                  prix={reponseLevres.prix && reponseLevres.prix}
-                />
+              <div className={styles.divContainer}>
+                <h4 className={styles.titleContainer}>
+                  Etape 7 : Hydratation des lèvres
+                </h4>
+                <p className={styles.descriptionContainer}>
+                  Les lèvres ne sont pas à négliger. Vous n’appliquerez pas un
+                  rouge à lèvres sur des lèvres sèches et abîmées ! Il faut donc
+                  les hydrater et les nourrir pour qu’elles restent douces et
+                  lisses.
+                </p>
+                <div className={styles.cardPosition}>
+                  <ProductCard
+                    nom={reponseLevres.nom && reponseLevres.nom}
+                    conseils_utilisation={
+                      reponseLevres.raison && reponseLevres.raison
+                    }
+                    prix={reponseLevres.prix && reponseLevres.prix}
+                  />
+                  <button className={styles.addCart}  onClick={() => toggleCartItem(reponseLevres)}>
+                    {panier.some((item) => item.nom === reponseLevres.nom)
+                      ? "Retirer du panier"
+                      : "Ajouter au panier"}
+                  </button>
+                </div>
               </div>
             </div>
           </div>

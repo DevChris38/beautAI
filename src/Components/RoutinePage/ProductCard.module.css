@@ -19,7 +19,7 @@
   align-items: center;
 }
 
-/* .addCard {
+.addCart {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,7 +28,7 @@
   font-size: 1rem;
   font-weight: bold;
   border-radius: 0%;
-} */
+}
 
 .CardInformation {
   background-color: #ffffff;

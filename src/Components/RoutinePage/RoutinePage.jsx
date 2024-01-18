@@ -255,7 +255,13 @@ export default function RoutinePage() {
 
     ai();
   }, []);
-
+  const removeFromCart = (index) => {
+    setPanier((prevPanier) => {
+      const newPanier = [...prevPanier];
+      newPanier.splice(index, 1);
+      return newPanier;
+    });
+  };
   console.log(panier);
   return (
     <section className={styles.GlobalPage}>
@@ -278,14 +284,18 @@ export default function RoutinePage() {
               <h2>Votre panier</h2>
             </Typography>
             <Typography sx={{ p: 2 }} className={styles.productPanier}>
-              {panier.map((product, index) => (
-                <ProductCard
-                  key={index}
-                  nom={product.nom && product.nom}
-                  prix={product.prix && product.prix}
-                />
-              ))}
-            </Typography>
+        {panier.map((product, index) => (
+          <div key={index}>
+            <ProductCard
+              nom={product.nom && product.nom}
+              prix={product.prix && product.prix}
+            />
+            <button onClick={() => removeFromCart(index)}>
+              Retirer du panier
+            </button>
+          </div>
+        ))}
+      </Typography>
           </Popover>
         </div>
       </div>
@@ -463,7 +473,7 @@ export default function RoutinePage() {
           </div>
         </section>
       ) : (
-        <p>En cours ...</p>
+        <p>En cours de chargement...</p>
       )}
     </section>
   );
